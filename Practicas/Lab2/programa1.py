@@ -5,9 +5,7 @@ from direccion import Direccion
 
 def main():
     Fecha1 = Fecha(2, 6, 1999)
-    Direccion1 = Direccion(
-        "78", "32-78", "Belén", "Medellín", "Apartamento 401", "Edificio Niágara"
-    )
+    Direccion1 = Direccion("78", "32-78", "Belén", "Medellín", "Niágara", "401")
     Julian_data = Usuario(
         "Julián",
         11527717436,

@@ -64,4 +64,4 @@ class Usuario:
         return self.dir
 
     def __str__(self):
-        return f"{self.nombre} {self.id} {self.fechaNacimiento} {self.ciudadNacimiento} {self.tel} {self.email} {self.dir}"
+        return f"{self.nombre}\n{self.id}\n{self.fechaNacimiento}\n{self.ciudadNacimiento}\n{self.tel}\n{self.email}\n{self.dir}"
