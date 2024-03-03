@@ -1,4 +1,4 @@
-*.pdf
-/Practicas/Lab1/test_pr2.txt 
-/Practicas/Lab1/variables_expresiones.ipynb 
-*pycache*
+*.pdf 
+*.txt
+*.ipynb
+__pycache__
