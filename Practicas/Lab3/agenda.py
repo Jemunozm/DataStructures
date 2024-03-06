@@ -1,3 +1,5 @@
+import re
+
 from usuario import Usuario
 from fecha import Fecha
 from direccion import Direccion
@@ -44,90 +46,51 @@ class Agenda:
 
     def import_archivo(self, file_name):
         with open(file_name, "r") as f:
+            # Count the number of lines to initialize the Agenda
+            num_lines = sum(1 for line in f)
+            self.usuarios = [None] * num_lines
+            f.seek(0)  # Reset the file pointer to the beginning
+
+            line_number = 0
             for line in f:
                 nombre, id, fecha_in, ciudad, tel, email, direccion_in = (
                     line.strip().split(",")
                 )
+
                 dia, mes, anio = map(int, fecha_in.split("-"))
                 fecha = Fecha(dia, mes, anio)
-                calle, nomenclatura, barrio, ciudad_dir, edificio, apto = (
-                    direccion_in.split(" ")
-                )
-                direccion = Direccion(
-                    calle, nomenclatura, barrio, ciudad_dir, edificio, apto
-                )
+
+                # Use regular expressions to extract address parts
+                address_pattern = r"^(\w+)\s+(\d+[a-zA-Z]?)\s*([-#]\d+)?\s*(\w+)?\s*(\w+)?\s*(\w+)\s*(\w+\s\w+)?$"
+                match = re.match(address_pattern, direccion_in)
+
+                if match:
+                    (
+                        calle,
+                        nomenclatura,
+                        numero,
+                        barrio,
+                        ciudad_dir,
+                        edificio,
+                        edificio_apto,
+                    ) = match.groups()
+                    if edificio_apto:
+                        edificio, apto = edificio_apto.split()
+                    else:
+                        apto = ""
+                    direccion = Direccion(
+                        calle,
+                        nomenclatura,
+                        numero,
+                        barrio,
+                        ciudad_dir or "",
+                        edificio,
+                        apto,
+                    )
+                else:
+                    # Handle cases where the address doesn't match the expected pattern
+                    direccion = Direccion("", "", "", "", "", "", "")
+
                 usuario = Usuario(nombre, int(id), fecha, ciudad, tel, email, direccion)
-                self.agregar(usuario)
-
-
-"""
-user1 = Usuario(
-    "Julián1",
-    1152717436,
-    Fecha(2, 6, 1999),
-    "Medellín",
-    1152717436,
-    "jugallegog@unal.edu.co",
-    "78 32-78 Belen Medellín Niagara 401",
-)
-user2 = Usuario(
-    "Julián2",
-    1152717437,
-    Fecha(2, 6, 1999),
-    "Medellín",
-    1152717437,
-    "jugallegog@unal.edu.co",
-    "78 32-78 Belen Medellín Niagara 401",
-)
-user3 = Usuario(
-    "Julián3",
-    1152717438,
-    Fecha(2, 6, 1999),
-    "Medellín",
-    1152717438,
-    "jugallegog@unal.edu.co",
-    "78 32-78 Belen Medellín Niagara 401",
-)
-user4 = Usuario(
-    "Julián4",
-    1152717439,
-    Fecha(2, 6, 1999),
-    "Medellín",
-    1152717439,
-    "jugallegog@unal.edu.co",
-    "78 32-78 Belen Medellín Niagara 401",
-)
-user5 = Usuario(
-    "Julián5",
-    1152717431,
-    Fecha(2, 6, 1999),
-    "Medellín",
-    1152717431,
-    "jugallegog@unal.edu.co",
-    "78 32-78 Belen Medellín Niagara 401",
-)
-
-agenda = Agenda(5)
-agenda.agregar(user1)
-agenda.agregar(user2)
-agenda.agregar(user3)
-agenda.agregar(user4)
-agenda.agregar(user5)
-
-user_id = 1152717436
-position = agenda.buscar(user_id)
-print(f"User with id {user_id} is at position {position} in the agenda.")
-
-agenda.export_archivo("Agenda.txt")
-"""
-
-agenda = Agenda(5)
-agenda.import_archivo("Agenda.txt")
-
-for i in range(agenda.__no_reg):
-    print(agenda[i])
-
-user_id_eliminar = 1152717436
-agenda.eliminar(user_id_eliminar)
-
-agenda.export_archivo("Agenda2.txt")
+                self.usuarios[line_number] = usuario
+                line_number += 1

@@ -52,4 +52,4 @@ class Direccion:
         return self.apto
 
     def __str__(self):
-        return f"Calle {self.calle} No. {self.nomenclatura} Barrio {self.barrio} Ciudad de {self.ciudad} Edificio {self.edificio} APTO {self.apto}"
+        return f"{self.calle} {self.nomenclatura} {self.barrio} {self.ciudad} {self.edificio} {self.apto}"
