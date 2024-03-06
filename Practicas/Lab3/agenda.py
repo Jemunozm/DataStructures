@@ -1,5 +1,3 @@
-import re
-
 from usuario import Usuario
 from fecha import Fecha
 from direccion import Direccion
@@ -31,13 +29,13 @@ class Agenda:
                 return i
 
     def eliminar(self, user_id) -> bool:
-        id_search = self.buscar(user_id)
+        id_search = self.buscar(id)
+        if id_search is None:
+            return False
         for i in range(id_search, self.__no_reg - 1):
-            if self.__registro[i].getId() == user_id:
-                self.__registro.pop(i)
-                self.__no_reg -= 1
-                return True
-        return False
+            self.__registro[i] = self.__registro[i + 1]
+        self.__no_reg -= 1
+        return True
 
     def export_archivo(self, file_name):
         with open(file_name, "w") as f:
@@ -46,51 +44,21 @@ class Agenda:
 
     def import_archivo(self, file_name):
         with open(file_name, "r") as f:
-            # Count the number of lines to initialize the Agenda
-            num_lines = sum(1 for line in f)
-            self.usuarios = [None] * num_lines
-            f.seek(0)  # Reset the file pointer to the beginning
-
-            line_number = 0
             for line in f:
-                nombre, id, fecha_in, ciudad, tel, email, direccion_in = (
+                nombre, iden, fecha_in, ciudad, tel, email, direccion_in = (
                     line.strip().split(",")
                 )
 
                 dia, mes, anio = map(int, fecha_in.split("-"))
                 fecha = Fecha(dia, mes, anio)
 
-                # Use regular expressions to extract address parts
-                address_pattern = r"^(\w+)\s+(\d+[a-zA-Z]?)\s*([-#]\d+)?\s*(\w+)?\s*(\w+)?\s*(\w+)\s*(\w+\s\w+)?$"
-                match = re.match(address_pattern, direccion_in)
-
-                if match:
-                    (
-                        calle,
-                        nomenclatura,
-                        numero,
-                        barrio,
-                        ciudad_dir,
-                        edificio,
-                        edificio_apto,
-                    ) = match.groups()
-                    if edificio_apto:
-                        edificio, apto = edificio_apto.split()
-                    else:
-                        apto = ""
-                    direccion = Direccion(
-                        calle,
-                        nomenclatura,
-                        numero,
-                        barrio,
-                        ciudad_dir or "",
-                        edificio,
-                        apto,
-                    )
-                else:
-                    # Handle cases where the address doesn't match the expected pattern
-                    direccion = Direccion("", "", "", "", "", "", "")
-
-                usuario = Usuario(nombre, int(id), fecha, ciudad, tel, email, direccion)
-                self.usuarios[line_number] = usuario
-                line_number += 1
+                calle, nomenclatura, barrio, ciudad_dir, edificio, edificio_apto = (
+                    direccion_in.strip().split(" ")
+                )
+                direccion = Direccion(
+                    calle, nomenclatura, barrio, ciudad_dir, edificio, edificio_apto
+                )
+                usuario = Usuario(
+                    nombre, int(iden), fecha, ciudad, tel, email, direccion
+                )
+                self.__registro.append(usuario)

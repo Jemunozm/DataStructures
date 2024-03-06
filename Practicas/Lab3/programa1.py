@@ -11,7 +11,7 @@ def main():
         "Medellín",
         1152717436,
         "jugallegog@unal.edu.co",
-        "Carrera 78 #32-78 Belen Medellín Niagara Apartamento 401",
+        "Carrera_78 #32-78 Belen Medellín Edificio_Niagara Apartamento_401",
     )
     user2 = Usuario(
         "Julián2",
@@ -20,7 +20,7 @@ def main():
         "Medellín",
         1152717437,
         "jugallegog@unal.edu.co",
-        "Carrera 78 #32-78 Belen Medellín Apartamento 401",
+        "Carrera_78 #32-78 Belen Medellín Edificio_Niagara Apartamento_401",
     )
     user3 = Usuario(
         "Julián3",
@@ -29,7 +29,7 @@ def main():
         "Medellín",
         1152717438,
         "jugallegog@unal.edu.co",
-        "Carrera 78 #32-78 Belen Medellín Niagara Apartamento 401",
+        "Carrera_78 #32-78 Belen Medellín Edificio_Niagara Apartamento_401",
     )
     user4 = Usuario(
         "Julián4",
@@ -38,7 +38,7 @@ def main():
         "Medellín",
         1152717439,
         "jugallegog@unal.edu.co",
-        "Carrera 78 #32-78 Belen Medellín Niagara Apartamento 401",
+        "Carrera_78 #32-78 Belen Medellín Edificio_Niagara Apartamento_401",
     )
     user5 = Usuario(
         "Julián5",
@@ -47,7 +47,7 @@ def main():
         "Medellín",
         1152717431,
         "jugallegog@unal.edu.co",
-        "Carrera 78 #32-78 Belen Medellín Niagara Apartamento 401",
+        "Carrera_78 #32-78 Belen Medellín Edificio_Niagara Apartamento_401",
     )
 
     agenda = Agenda(5)
