@@ -1,0 +1,4 @@
+Daniel 1107520134 5,9,2000 Cali 3113825465 dsarmientov@unal.edu.co 35,
+Diego 4206969 15,2,1999 Medellín 3105309854 diegoa@unal.edu.co 10,
+Emir 10055625911 1,6,2000 Sincelejo 3023271941 eperef@unal.edu.co 56,
+Juan 10042525911 27,8,2000 Boyacá 3029461941 Jmanrtinezp@unal.edu.co 56,
