@@ -5,6 +5,17 @@ class ListDouble:
         self.head = None
         self.tail = None
         self.size = 0
+    
+    def __str__(self):
+        if self.isEmpty():
+            return "List is empty"
+        else:
+            node = self.head
+            result = ""
+            while node != None:
+                result += str(node.getData()) + " "
+                node = node.getNext()
+            return result
 
     def size(self):
         return self.size
@@ -31,6 +42,7 @@ class ListDouble:
             self.head.setPrev(newNode)
             self.head = newNode
         self.size += 1
+        self.setSize(self.size)
     
     def addLast(self, data):
         newNode = NodeDouble(data)
@@ -38,10 +50,11 @@ class ListDouble:
             self.head = newNode
             self.tail = newNode
         else:
-            newNode.setPrev(self.tail)
             self.tail.setNext(newNode)
+            newNode.setPrev(self.tail)
             self.tail = newNode
         self.size += 1
+        self.setSize(self.size)
     
     def removeFirst(self):
         if self.isEmpty():
@@ -51,6 +64,7 @@ class ListDouble:
         nodeDelete.setNext(None)
         self.head.setPrev(None)
         self.size -= 1
+        self.setSize(self.size)
         return nodeDelete.getData()
     
     def removeLast(self):
@@ -61,6 +75,7 @@ class ListDouble:
         self.tail.setNext(None)
         nodeDelete.setPrev(None)
         self.size -= 1
+        self.setSize(self.size)
         return nodeDelete.getData()
     
     def remove(self, node):
@@ -77,7 +92,18 @@ class ListDouble:
             nodeDelete.setNext(None)
             nodeDelete.setPrev(None)
             self.size -= 1
+            self.setSize(self.size)
             return nodeDelete.getData()
+        
+    def delete(self, data):
+        if self.isEmpty():
+            raise Exception("List is empty")
+        node = self.head
+        while node != None:
+            if node.getData() == data:
+                return self.remove(node)
+            node = node.getNext()
+        raise Exception("Data not found")
 
     def addBefore(self, node, data):
         if node == self.head:
@@ -90,6 +116,7 @@ class ListDouble:
             nodeBefore.setNext(newNode)
             node.setPrev(newNode)
             self.size += 1
+            self.setSize(self.size)
 
     def addAfter(self, node, data):
         if node == self.tail:
@@ -101,5 +128,6 @@ class ListDouble:
             newNode.setNext(nodeAfter)
             node.setNext(newNode)
             nodeAfter.setPrev(newNode)
-            self.size += 1      
+            self.size += 1
+            self.setSize(self.size) 
         
