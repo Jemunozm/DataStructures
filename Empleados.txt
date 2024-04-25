@@ -1,0 +1,10 @@
+Jesus 1003395952 10/10/1999 Montería 3209467789 jemunozm@unal.edu.co 68, 51b-31, Sevilla, Medellín, piso 2, 
+Daniel 1107520134 5,9,2000 Cali 3113825465 dsarmientov@unal.edu.co 35, 65d-42, Conquistadores, Medellín, piso 6, SantAngelo
+Diego 4206969 15,2,1999 Medellín 3105309854 diegoa@unal.edu.co 10, 80d-42, belen, Medellín, piso 3, owo
+Emir 10055625911 1,6,2000 Sincelejo 3023271941 eperef@unal.edu.co 56, 25-84, Chagualo, Medellín, piso 6, Paseo de sevilla
+Juan 10042525911 27,8,2000 Boyacá 3029461941 Jmanrtinezp@unal.edu.co 56, 25-84, Chagualo, Medellín, piso 15, Paseo de sevilla
+Carlos 1012345678 12,7,1998 Bogotá 3156789123 carlosj@unal.edu.co 23, 45b-67, Laureles, Medellín, piso 4, La Playa
+Andrea 1098765432 3,11,1997 Cartagena 3209876543 andream@unal.edu.co 78, 90c-12, Poblado, Medellín, piso 7, El Tesoro
+Santiago 1087654321 22,4,1999 Barranquilla 3134567890 santiagop@unal.edu.co 45, 67d-89, Estadio, Medellín, piso 9, Los Colores
+Laura 1076543210 14,2,1998 Santa Marta 3123456789 laurag@unal.edu.co 67, 89e-01, Robledo, Medellín, piso 2, Villa Nueva
+Camila 1065432109 6,5,2000 Bucaramanga 3112345678 camilat@unal.edu.co 89, 01f-23, Belén, Medellín, piso 5, Los Alpes
