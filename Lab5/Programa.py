@@ -16,7 +16,7 @@ print("Before sorting:")
 print(colecion._UsuariosList)
 
 # Sort the collection
-sorted_coleccion = colecion.mergeSort()
+sorted_coleccion = colecion.mergeSort(colecion._UsuariosList.head)
 
 # Print the collection after sorting
 print("After sorting:")
