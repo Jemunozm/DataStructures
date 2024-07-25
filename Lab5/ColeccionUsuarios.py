@@ -45,4 +45,13 @@ class ColeccionUsuarios:
         second = self.mergeSort(second)
 
         return self.merge(first, second)
-        
+    
+    def sort(self):
+        self._UsuariosList.head = self.mergeSort(self._UsuariosList.head)
+
+    def printList(self):
+        nodeBegin = self._UsuariosList.head
+        while nodeBegin:
+            print(nodeBegin)
+            nodeBegin.next
+        print()
