@@ -130,4 +130,27 @@ class ListDouble:
             nodeAfter.setPrev(newNode)
             self.size += 1
             self.setSize(self.size) 
+
+    def currentPositionNode(self):
+        count = 0
+        current = self.head
+        while current:
+            count +=1
+            current = current.next
+        return count
+
+    def sliceList(self, start, end):
+        newList = ListDouble()
+        currentIndex = 0
+        currentPositionNode = self.head
+
+        while currentPositionNode and currentIndex < start:
+            currentPositionNode = currentPositionNode.next
+            currentIndex +=1
+
+        while currentPositionNode and currentIndex < end:
+            newList.addLast(currentPositionNode.data)
+            currentPositionNode = currentPositionNode.next
+            currentIndex +=1
         
+        return newList
