@@ -1,4 +1,5 @@
 from Lab8 import NodeDouble
+from Lab8 import Queue
 
 class BinaryTree:
     def __init__(self):
@@ -36,9 +37,9 @@ class BinaryTree:
         if self.isRoot(node):
             return None
         else:
-            Q = newQueue()
-            Q.enqueue(root)
-            temp = NodeDouble(root)
+            Q = Queue()
+            Q.enqueue(self.root)
+            temp = NodeDouble(self.root)
         while (not Q.isEmpty() & self.left(Q.first()) != node & self.right(Q.first()) != node):
             temp = Q.dequeue()
             if self.hasLeft(temp):
@@ -58,5 +59,5 @@ class BinaryTree:
             return 0
         else: 
             h = 0
-            h = max(self.height(left(node)),self.height(right(node)))
+            h = max(self.height(self.left(node)),self.height(self.right(node)))
             return 1 + h
