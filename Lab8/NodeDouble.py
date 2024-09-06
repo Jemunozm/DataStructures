@@ -16,11 +16,11 @@ class NodeDouble:
     def getRight(self):
         return self.next
     
-    def setNext(self, next):
+    def setRight(self, next):
         self.next = next
     
     def getLeft(self):
         return self.prev
     
-    def setPrev(self, prev):
+    def setLeft(self, prev):
         self.prev = prev
