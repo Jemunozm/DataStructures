@@ -1,5 +1,5 @@
-from Lab8 import NodeDouble
-from Lab8 import Queue
+from NodeDouble import NodeDouble
+from Queue import Queue
 
 class BinaryTree:
     def __init__(self):
@@ -111,25 +111,25 @@ class BinaryTree:
         else:
             print(v.getData())
 
-    def Preorder(self, v=NodeDouble):
+    def preorder(self, v=NodeDouble):
         self.visit(v)
         if self.hasLeft(v):
-            self.Preorder(self,self.left(v))
+            self.preorder(self,self.left(v))
         if self.hasRight(v):
-            self.Preorder(self,self.right(v))
+            self.preorder(self,self.right(v))
 
-    def Inorder(self, v=NodeDouble):
+    def inorder(self, v=NodeDouble):
         if self.hasLeft(v):
-            self.Inorder(self,self.left(v))
+            self.inorder(self,self.left(v))
         self.visit(v)
         if self.hasRight(v):
-            self.Ineorder(self,self.right(v))
+            self.inorder(self,self.right(v))
     
-    def Posorder(self, v=NodeDouble):
+    def posorder(self, v=NodeDouble):
         if self.hasLeft(v):
-            self.Posorder(self, self.left(v))
+            self.posorder(self, self.left(v))
         if self.right(v):
-            self.Posorder(self, self.right(v))
+            self.posorder(self, self.right(v))
         self.visit(v)
     
     def minB(self,v=NodeDouble):
