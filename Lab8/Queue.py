@@ -1,4 +1,4 @@
-from Lab8 import ListSimple
+from ListSimple import ListSimple
 
 class Queue:
     def __init__(self, data = None):
