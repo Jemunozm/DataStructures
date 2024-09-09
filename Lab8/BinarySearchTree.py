@@ -1,5 +1,6 @@
 from BinaryTree import BinaryTree
 from BSTEntry import BSTEntry
+from NodeDouble import NodeDouble
 
 def BinarySearchTree(BinaryTree):
 
