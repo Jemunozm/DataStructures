@@ -1,14 +1,18 @@
 from BinaryTree import BinaryTree
 from BSTEntry import BSTEntry
-from NodeDouble import NodeDouble
+from Node import Node
 
-def BinarySearchTree(BinaryTree):
+def BinarySearchTree(BinaryTree = BinaryTree):
 
+    #def __init__(self):
+        #super().__init__()
+
+    
      
-    def searchTree(k = int, v = NodeDouble):
-        u = BSTEntry()
-        u = v.getData()
-        if k==u.getKey():
+    def searchTree(k = int, v = Node):
+        u = BSTEntry(v,v.getData())
+        #u = v.getData()
+        if k == u.getKey():
             return v
         elif k < u.getKey():
             return searchTree(k,v.getLeft())
@@ -16,50 +20,50 @@ def BinarySearchTree(BinaryTree):
             return searchTree(k,v.getRight())
 
     def find(k = int):
-        return searchTree(k, root)
+        return searchTree(k, BinaryTree.root)
     
-    def addEntry(v = NodeDouble, o = BSTEntry):
-        temp = BSTEntry()
-        temp = v.getData()
-        nD   = NodeDouble(o)
-        if o.getKey()<temp.getKey():
-            if hasLeft(v):
-                addEntry(Left(v), o)
+    def addEntry(v = Node, o = BSTEntry):
+        temp = BSTEntry(v,v.getData())
+        #temp = v.getData()
+        nD   = Node(o)
+        if o.getKey() < temp.getKey():
+            if BinaryTree.hasLeft(v):
+                addEntry(BinaryTree.left(v), o)
             else:
                 v.setLeft(nD)
         else:
-            if hasRight(v):
-                addEntry(right(v), o)
+            if BinaryTree.hasRight(v):
+                addEntry(BinaryTree.right(v), o)
             else: 
                 v.setRight(nD)
     
     def insert(e = object, k = int):
         O = BSTEntry(e,k)
-        if isEmpty():
-            super.addRoot(O)
+        if BinaryTree.isEmpty():
+            BinaryTree.addRoot(O)
         else:
-            addEntry(root,O)
+            addEntry(BinaryTree.root,O)
     
-    def maxNode(temp = NodeDouble):
-        if hasRight(temp):
-            return maxNode(right(temp))
+    def maxNode(temp = Node):
+        if BinaryTree.hasRight(temp):
+            return maxNode(BinaryTree.right(temp))
         else:
             return temp
         
-    def predecesor(v = NodeDouble):
-        temp = NodeDouble()
+    def predecesor(v = Node):
+        temp = Node()
         temp = temp.getLeft()
         return maxNode(temp)
     
     def Remove(k = int):
-        v = NodeDouble()
+        v = Node()
         v = find(k)
         temp = v.getData()
-        if hasLeft(v) and hasRight(v):
-            w = NodeDouble()
+        if BinaryTree.hasLeft(v) and BinaryTree.hasRight(v):
+            w = Node()
             w = predecesor(v)
             v.setData(w.getData())
-            super.remove(w)
+            BinaryTree.remove(w)
         else:
-            super.remove(v)
+            BinaryTree.remove(v)
         return temp
