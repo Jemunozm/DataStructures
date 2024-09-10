@@ -1,22 +1,22 @@
 from BinaryTree import BinaryTree
-from NodeDouble import NodeDouble
+from Node import Node
 
 class BSTEntry:
 
     def __init__(self, e = object, k = int):
-        self._data = e
-        self._k = k
+        self.data = e
+        self.k = k
 
     def getData(self):
-        return self._data
+        return self.data
     
-    def setData(self,d=object):
-        self._data = d
+    def setData(self,d = object):
+        self.data = d
     
     def getKey(self):
-        return self._k
+        return self.k
     
     def setKey(self, k = int):
-        self._k = k
+        self.k = k
 
     
